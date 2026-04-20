@@ -1,0 +1,12 @@
+fastapi
+uvicorn[standard]
+sqlalchemy
+pymysql
+pydantic
+python-dotenv
+python-multipart
+passlib[bcrypt]
+fastapi-jwt-auth
+PyJWT
+httpx
+cloudinary

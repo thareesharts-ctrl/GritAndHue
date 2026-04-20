@@ -1,0 +1,124 @@
+.admin-page {
+  padding: 4rem 2rem;
+  background-color: #f7f7f7;
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.admin-container {
+  background: white;
+  padding: 3rem;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+}
+
+.admin-container h2 {
+  margin-bottom: 0.5rem;
+  font-size: 2rem;
+  color: #111;
+  text-align: center;
+}
+
+.admin-subtitle {
+  text-align: center;
+  color: #666;
+  margin-bottom: 2rem;
+  font-size: 0.95rem;
+}
+
+.admin-form .form-group {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-form .form-row {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.admin-form .form-row .form-group {
+  flex: 1;
+}
+
+.admin-form label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #444;
+}
+
+.admin-form input,
+.admin-form textarea {
+  padding: 12px 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  font-family: inherit;
+}
+
+.admin-form input:focus,
+.admin-form textarea:focus {
+  border-color: #111;
+  box-shadow: 0 0 0 3px rgba(0,0,0,0.05);
+}
+
+.file-upload {
+  border: 2px dashed #ddd;
+  padding: 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+  background-color: #fafafa;
+  transition: border-color 0.2s;
+}
+
+.file-upload:hover {
+  border-color: #111;
+}
+
+.admin-form .submit-btn {
+  width: 100%;
+  padding: 16px;
+  background-color: #111;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 1rem;
+}
+
+.admin-form .submit-btn:hover {
+  background-color: #333;
+}
+
+.admin-form .submit-btn:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+}
+
+.admin-message {
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.admin-message.success {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+}
+
+.admin-message.error {
+  background-color: #ffebee;
+  color: #c62828;
+}

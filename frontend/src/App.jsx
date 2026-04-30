@@ -43,7 +43,7 @@ function App() {
       const token = localStorage.getItem('userToken');
       if (user && token) {
         try {
-          const res = await fetch('http://127.0.0.1:8000/api/v1/user/data', {
+          const res = await fetch((import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000') + '/api/v1/user/data', {
             headers: { 'Authorization': `Bearer ${token}` }
           });
           const data = await res.json();
@@ -68,7 +68,7 @@ function App() {
       const token = localStorage.getItem('userToken');
       if (user && token) {
         try {
-          await fetch('http://127.0.0.1:8000/api/v1/user/sync', {
+          await fetch((import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000') + '/api/v1/user/sync', {
             method: 'POST',
             headers: { 
               'Content-Type': 'application/json',

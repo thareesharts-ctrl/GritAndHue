@@ -27,7 +27,7 @@ const AdminPanel = () => {
   const fetchProducts = async () => {
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await fetch('http://127.0.0.1:8000/api/v1/products', {
+      const response = await fetch((import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000') + '/api/v1/products', {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const data = await response.json();
@@ -122,8 +122,8 @@ const AdminPanel = () => {
     try {
       const token = localStorage.getItem('adminToken');
       const url = editingProduct 
-        ? `http://127.0.0.1:8000/api/v1/products/${editingProduct._id}`
-        : 'http://127.0.0.1:8000/api/v1/products';
+        ? (import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000') + `/api/v1/products/${editingProduct._id}`
+        : (import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000') + '/api/v1/products';
       
       const method = editingProduct ? 'PUT' : 'POST';
 
@@ -154,7 +154,7 @@ const AdminPanel = () => {
     
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await fetch(`http://127.0.0.1:8000/api/v1/products/${deletingId}`, {
+      const response = await fetch((import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000') + `/api/v1/products/${deletingId}`, {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
       });

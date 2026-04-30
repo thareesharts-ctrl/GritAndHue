@@ -15,7 +15,7 @@ const ProductDetails = ({ addToCart, favorites, toggleFavorite }) => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    fetch(`http://127.0.0.1:8000/api/v1/products/${id}`)
+    fetch((import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000') + `/api/v1/products/${id}`)
       .then(res => res.json())
       .then(data => {
         if (data.error) {

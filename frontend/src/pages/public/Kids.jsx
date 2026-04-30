@@ -37,7 +37,7 @@ const Kids = ({ addToCart, favorites, toggleFavorite }) => {
   };
 
   useEffect(() => {
-    fetch('http://127.0.0.1:8000/api/v1/products?category=kids')
+    fetch((import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000') + '/api/v1/products?category=kids')
       .then(res => res.json())
       .then(data => {
         if (data.error) {

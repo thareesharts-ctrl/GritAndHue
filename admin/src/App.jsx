@@ -4,9 +4,19 @@ import AdminLogin from './pages/admin/AdminLogin';
 import AdminPanel from './pages/admin/AdminPanel';
 
 const ProtectedAdmin = ({ children }) => {
+  // Check if token is passed in URL (from main site login)
+  const urlParams = new URLSearchParams(window.location.search);
+  const tokenFromUrl = urlParams.get('token');
+  if (tokenFromUrl) {
+    localStorage.setItem('adminToken', tokenFromUrl);
+    // Clean up URL without refreshing
+    window.history.replaceState({}, document.title, window.location.pathname);
+  }
+
   const token = localStorage.getItem('adminToken');
   if (!token) {
-    return <Navigate to="/admin-login" replace />;
+    window.location.href = 'http://localhost:5173/login';
+    return null;
   }
   return children;
 };

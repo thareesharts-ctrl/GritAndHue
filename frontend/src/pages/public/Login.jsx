@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './AdminAuth.css';
+import { useNavigate, Link } from 'react-router-dom';
+import './UserAuth.css';
 
-const AdminLogin = () => {
+const Login = ({ setUser }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -24,8 +24,16 @@ const AdminLogin = () => {
       const data = await response.json();
 
       if (response.ok) {
-        localStorage.setItem('adminToken', data.token);
-        navigate('/admin'); // Redirect to dashboard
+        if (data.role === 'admin') {
+          // If admin, redirect to admin panel URL with token
+          window.location.href = `http://localhost:5174/admin?token=${data.token}`; 
+        } else {
+          // If regular user
+          localStorage.setItem('userToken', data.token);
+          localStorage.setItem('userData', JSON.stringify(data.user));
+          setUser(data.user);
+          navigate('/'); // Redirect to home or account page
+        }
       } else {
         setError(data.error || 'Invalid credentials');
       }
@@ -38,20 +46,23 @@ const AdminLogin = () => {
   return (
     <div className="auth-page">
       <div className="auth-container">
-        <h2>Admin Authentication</h2>
-        <p>Restricted area. Please sign in.</p>
+        <div className="auth-header">
+          <img src="/assets/logo.png" alt="Grit and Hue Logo" className="auth-logo" />
+          <h2 className="auth-title">Welcome Back</h2>
+          <p className="auth-subtitle">Sign in to your account</p>
+        </div>
 
         {error && <div className="auth-error">{error}</div>}
 
         <form onSubmit={handleLogin} className="auth-form">
           <div className="form-group">
-            <label>Admin Email</label>
+            <label>Email Address</label>
             <input 
               type="email" 
               value={email} 
               onChange={(e) => setEmail(e.target.value)} 
               required 
-              placeholder="admin@daybyday.com"
+              placeholder="name@example.com"
             />
           </div>
           <div className="form-group">
@@ -65,12 +76,16 @@ const AdminLogin = () => {
             />
           </div>
           <button type="submit" disabled={loading} className="auth-btn">
-            {loading ? 'Authenticating...' : 'Secure Login'}
+            {loading ? 'Signing in...' : 'Sign In'}
           </button>
         </form>
+
+        <div className="auth-footer">
+          <p>Don't have an account? <Link to="/register">Create one</Link></p>
+        </div>
       </div>
     </div>
   );
 };
 
-export default AdminLogin;
+export default Login;

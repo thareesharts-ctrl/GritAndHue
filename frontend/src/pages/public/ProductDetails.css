@@ -1,0 +1,382 @@
+.product-details-page {
+  padding: 4rem 0;
+  background-color: #fff;
+  font-family: 'Inter', sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 5%;
+}
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  color: #666;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 2rem;
+  transition: color 0.2s;
+}
+
+.back-btn:hover {
+  color: #111;
+}
+
+.details-wrapper {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 4rem;
+}
+
+/* Image Section */
+.image-section {
+  position: sticky;
+  top: 100px;
+}
+
+.main-image-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3/4;
+  background: #f9f9f9;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.main-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background-color: #fff;
+}
+
+.thumbnail-strip {
+  display: flex;
+  gap: 12px;
+  margin-top: 1.5rem;
+  overflow-x: auto;
+  padding-bottom: 5px;
+}
+
+.thumbnail-box {
+  width: 70px;
+  height: 90px;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  flex-shrink: 0;
+  transition: all 0.2s;
+  background: #f9f9f9;
+}
+
+.thumbnail-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background-color: #fff;
+}
+
+.thumbnail-box.active {
+  border-color: #111;
+  transform: translateY(-2px);
+}
+
+.detail-tag {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  background: #111;
+  color: white;
+  padding: 6px 14px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+/* Info Section */
+.info-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.category-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #888;
+  letter-spacing: 0.1em;
+}
+
+.info-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.icon-btn {
+  background: #f5f5f5;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.icon-btn:hover {
+  background: #eee;
+  transform: scale(1.05);
+}
+
+.product-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+}
+
+.rating-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 2rem;
+}
+
+.stars {
+  display: flex;
+  gap: 2px;
+}
+
+.rating-text {
+  font-size: 0.9rem;
+  color: #666;
+  font-weight: 500;
+}
+
+.price-row {
+  margin-bottom: 2rem;
+}
+
+.current-price {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #111;
+  margin-right: 12px;
+}
+
+.mrp {
+  font-size: 0.85rem;
+  color: #999;
+}
+
+.description-box {
+  margin-bottom: 2.5rem;
+}
+
+.description-box h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+}
+
+.description-box p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+.size-selector {
+  margin-bottom: 3rem;
+}
+
+.size-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.size-header h3 {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.size-chart {
+  background: none;
+  border: none;
+  color: #111;
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.size-options {
+  display: flex;
+  gap: 12px;
+}
+
+.size-btn {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #ddd;
+  background: white;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.size-btn.kids-size {
+  width: auto;
+  min-width: 70px;
+  padding: 0 10px;
+  font-size: 0.8rem;
+}
+
+.size-btn.active {
+  background: #111;
+  color: white;
+  border-color: #111;
+  transform: scale(1.05);
+}
+
+.size-btn:hover {
+  border-color: #111;
+  background: #f9f9f9;
+}
+
+.no-sizes {
+  font-size: 0.9rem;
+  color: #888;
+  font-style: italic;
+  margin: 10px 0;
+}
+
+.error-text {
+  color: #e50010;
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 10px;
+}
+
+.error-shake {
+  animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes shake {
+  10%, 90% { transform: translate3d(-1px, 0, 0); }
+  20%, 80% { transform: translate3d(2px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+  40%, 60% { transform: translate3d(4px, 0, 0); }
+}
+
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 3rem;
+}
+
+.order-whatsapp-btn {
+  background: #25D366;
+  color: white;
+  border: none;
+  padding: 1.2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.order-whatsapp-btn:hover {
+  background: #128C7E;
+  transform: translateY(-2px);
+}
+
+.add-cart-btn {
+  background: #111;
+  color: white;
+  border: none;
+  padding: 1.2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: background 0.2s;
+}
+
+.add-cart-btn:hover {
+  background: #333;
+}
+
+.trust-badges {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 2rem;
+  border-top: 1px solid #eee;
+}
+
+.badge-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: #666;
+}
+
+.badge-item span {
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* Loading & Error States */
+.loading-state, .error-state {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .details-wrapper {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .image-section {
+    position: static;
+  }
+  
+  .product-title {
+    font-size: 2rem;
+  }
+}

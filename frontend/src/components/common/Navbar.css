@@ -3,7 +3,7 @@
   width: 100%;
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
   background-color: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid #f0f0f0;
@@ -23,7 +23,7 @@
 .promo-text {
   font-size: 0.75rem;
   font-weight: 500;
-  color: #c93e3e;
+  color: #000000;
   letter-spacing: 0.5px;
 }
 
@@ -63,14 +63,21 @@
   flex-shrink: 0;
 }
 
-.logo-text {
-  font-size: 1.5rem;
-  font-weight: 800;
-  color: #e50010;
-  text-decoration: none;
-  letter-spacing: -0.5px;
-  font-family: 'Georgia', serif;
-  font-style: italic;
+.logo-link {
+  display: flex;
+  align-items: center;
+  transition: opacity 0.2s ease;
+}
+
+.logo-link:hover {
+  opacity: 0.8;
+}
+
+.navbar-logo {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  display: block;
 }
 
 .nav-links {
@@ -221,7 +228,104 @@
     gap: 12px;
   }
   
-  .nav-icons a {
-    padding: 2px;
+}
+
+.compact-auth-desktop {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-right: 15px;
+}
+
+.user-name-small {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #111;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.logout-text-link {
+  background: none;
+  border: none;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #e50010;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+}
+
+.divider-small {
+  width: 1px;
+  height: 15px;
+  background: #eee;
+  margin-left: 5px;
+}
+
+.compact-auth-mobile {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 1rem !important;
+  background: #fdfdfd;
+  border-radius: 8px;
+  margin-top: 5px !important;
+  border: 1px solid #eee;
+}
+
+.simple-logout-link {
+  background: none;
+  border: none;
+  color: #e50010;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-decoration: underline;
+}
+
+/* Cart Badge Styling */
+.cart-icon-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background-color: #e50010;
+  color: white;
+  font-size: 0.6rem;
+  font-weight: 700;
+  min-width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  border: 1.5px solid white;
+  animation: badgePop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes badgePop {
+  from { transform: scale(0); }
+  to { transform: scale(1); }
+}
+
+@media (max-width: 900px) {
+  .nav-links li.mobile-only-icon a.cart-icon-wrapper {
+    gap: 12px;
+  }
+  
+  .nav-links li.mobile-only-icon a.cart-icon-wrapper .cart-badge {
+    position: static;
+    border: none;
+    background: #f0f0f0;
+    color: #111;
+    font-size: 0.8rem;
+    min-width: 22px;
+    height: 22px;
   }
 }

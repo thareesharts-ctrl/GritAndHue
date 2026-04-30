@@ -1,0 +1,288 @@
+.cart-page {
+  padding: 4rem 0;
+  background-color: #fdfdfd;
+  min-height: 80vh;
+  font-family: 'Inter', sans-serif;
+}
+
+.cart-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.cart-layout {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 3rem;
+  align-items: start;
+}
+
+/* Items List */
+.cart-items-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.cart-item {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 16px;
+  display: flex;
+  gap: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+  border: 1px solid #f0f0f0;
+}
+
+.item-image {
+  width: 120px;
+  height: 160px;
+  border-radius: 10px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background-color: #fff;
+}
+
+.item-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.item-header h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.remove-btn {
+  background: none;
+  border: none;
+  color: #ccc;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.remove-btn:hover {
+  color: #e53e3e;
+}
+
+.item-info-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 4px 0 1rem;
+}
+
+.item-category {
+  font-size: 0.75rem;
+  color: #999;
+  font-weight: 700;
+  margin: 0;
+}
+
+.item-size-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #111;
+  background: #f0f0f0;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.item-footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: #f8f8f8;
+  padding: 6px 12px;
+  border-radius: 30px;
+}
+
+.quantity-controls button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: #555;
+}
+
+.quantity-controls button:disabled {
+  opacity: 0.3;
+}
+
+.quantity-controls span {
+  font-weight: 700;
+  min-width: 20px;
+  text-align: center;
+}
+
+.item-total-price {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #111;
+}
+
+/* Summary Card */
+.summary-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+  position: sticky;
+  top: 120px;
+}
+
+.summary-card h2 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  color: #666;
+}
+
+.free-shipping {
+  color: #2f855a;
+  font-weight: 700;
+}
+
+.summary-divider {
+  height: 1px;
+  background: #eee;
+  margin: 1.5rem 0;
+}
+
+.total-row {
+  color: #111;
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+.gst-notice {
+  font-size: 0.75rem;
+  color: #999;
+  margin: 1.5rem 0;
+}
+
+.order-btn {
+  width: 100%;
+  background: #111;
+  color: white;
+  border: none;
+  padding: 1.2rem;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  transition: all 0.2s;
+}
+
+.order-btn:hover {
+  background: #333;
+  transform: translateY(-2px);
+}
+
+.payment-trust {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.payment-trust p {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+/* Empty Cart */
+.empty-cart-page {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.empty-cart-content h2 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem;
+}
+
+.empty-cart-content p {
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.shop-now-btn {
+  display: inline-block;
+  background: #111;
+  color: white;
+  padding: 1rem 2.5rem;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+/* RESPONSIVE */
+@media (max-width: 950px) {
+  .cart-layout {
+    grid-template-columns: 1fr;
+  }
+  
+  .summary-card {
+    position: static;
+  }
+}
+
+@media (max-width: 600px) {
+  .cart-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .item-image {
+    width: 150px;
+    height: 200px;
+  }
+  
+  .item-header h3 {
+    font-size: 1.1rem;
+  }
+  
+  .item-footer {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}

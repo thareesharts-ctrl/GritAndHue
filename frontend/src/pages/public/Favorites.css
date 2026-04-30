@@ -1,0 +1,153 @@
+.favorites-page {
+  padding: 4rem 0;
+  background-color: #fff;
+  min-height: 80vh;
+  font-family: 'Inter', sans-serif;
+}
+
+.fav-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #111;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.fav-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.fav-card {
+  border: 1px solid #eee;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.2s;
+  background: white;
+}
+
+.fav-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.fav-image-container {
+  position: relative;
+  aspect-ratio: 3/4;
+}
+
+.fav-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background-color: #fff;
+}
+
+.remove-fav-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: white;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  color: #999;
+  transition: color 0.2s;
+}
+
+.remove-fav-btn:hover {
+  color: #e53e3e;
+}
+
+.fav-info {
+  padding: 1.2rem;
+}
+
+.fav-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 4px;
+}
+
+.fav-header h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.fav-price {
+  font-weight: 800;
+  color: #111;
+}
+
+.fav-category {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #999;
+  margin-bottom: 1.2rem;
+}
+
+.move-to-cart-btn {
+  width: 100%;
+  padding: 10px;
+  background: #111;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background 0.2s;
+}
+
+.move-to-cart-btn:hover {
+  background: #333;
+}
+
+/* Empty Favorites */
+.empty-fav-page {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.empty-fav-content h2 {
+  font-size: 2rem;
+  margin: 1.5rem 0 0.5rem;
+}
+
+.empty-fav-content p {
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.shop-now-btn {
+  display: inline-block;
+  background: #111;
+  color: white;
+  padding: 1rem 2.5rem;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+@media (max-width: 600px) {
+  .fav-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}

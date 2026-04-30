@@ -1,0 +1,92 @@
+/* App.css */
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.page-content {
+  flex: 1;
+  /* Add padding to prevent content from hiding behind the sticky navbar */
+  padding-top: 10px;
+}
+
+.home-page-simple {
+  padding: 6rem 1rem;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  background: white;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-content-simple h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 800;
+  color: #111;
+}
+
+.home-content-simple p {
+  color: #666;
+  font-size: 1.1rem;
+  margin-bottom: 2.5rem;
+}
+
+.home-links-simple {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.home-btn-black {
+  padding: 1rem 2rem;
+  background: #111;
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: bold;
+  transition: transform 0.2s;
+}
+
+.home-btn-white {
+  padding: 1rem 2rem;
+  background: #fff;
+  border: 1px solid #111;
+  color: #111;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: bold;
+  transition: transform 0.2s;
+}
+
+.home-btn-black:hover, .home-btn-white:hover {
+  transform: translateY(-2px);
+}
+
+/* RESPONSIVE MEDIA QUERIES */
+@media (max-width: 600px) {
+  .page-content {
+    padding-top: 5px;
+  }
+
+  .home-page-simple {
+    padding: 4rem 1rem;
+  }
+
+  .home-content-simple h1 {
+    font-size: 2rem;
+  }
+
+  .home-links-simple {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .home-btn-black, .home-btn-white {
+    width: 250px;
+  }
+}

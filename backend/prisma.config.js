@@ -1,3 +1,7 @@
-module.exports = {
-  seed: 'node prisma/seed.js'
-};
+import { defineConfig } from "prisma/config";
+
+export default defineConfig({
+  migrations: {
+    seed: "node prisma/seed.js"
+  }
+});

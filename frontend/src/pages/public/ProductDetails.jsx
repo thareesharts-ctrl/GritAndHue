@@ -12,6 +12,18 @@ const ProductDetails = ({ addToCart, favorites, toggleFavorite }) => {
   const [activeImage, setActiveImage] = useState('');
   const [selectedSize, setSelectedSize] = useState('');
   const [sizeError, setSizeError] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const handleShare = () => {
+    navigator.clipboard.writeText(window.location.href)
+      .then(() => {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      })
+      .catch(err => {
+        console.error("Failed to copy link:", err);
+      });
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -45,6 +57,9 @@ const ProductDetails = ({ addToCart, favorites, toggleFavorite }) => {
       return;
     }
     addToCart(product, selectedSize);
+    if (localStorage.getItem('userToken')) {
+      navigate('/cart');
+    }
   };
 
   return (
@@ -84,10 +99,16 @@ const ProductDetails = ({ addToCart, favorites, toggleFavorite }) => {
                 <button 
                   className={`icon-btn ${favorites.find(f => f._id === product._id) ? 'active' : ''}`}
                   onClick={() => toggleFavorite(product)}
+                  title="Add to Favorites"
                 >
                   <Heart size={20} fill={favorites.find(f => f._id === product._id) ? "#e50010" : "none"} color={favorites.find(f => f._id === product._id) ? "#e50010" : "#111"} />
                 </button>
-                <button className="icon-btn"><Share2 size={20} /></button>
+                <div className="share-btn-container">
+                  <button className="icon-btn" onClick={handleShare} title="Copy Link">
+                    <Share2 size={20} />
+                  </button>
+                  {copied && <span className="copied-tooltip">Link Copied!</span>}
+                </div>
               </div>
             </div>
 

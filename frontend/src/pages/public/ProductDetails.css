@@ -259,8 +259,9 @@
 }
 
 .size-btn:hover {
+  background: #111;
+  color: white;
   border-color: #111;
-  background: #f9f9f9;
 }
 
 .no-sizes {
@@ -379,4 +380,46 @@
   .product-title {
     font-size: 2rem;
   }
+}
+
+/* Copy Link Tooltip Styles */
+.share-btn-container {
+  position: relative;
+  display: inline-block;
+}
+
+.copied-tooltip {
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #111;
+  color: white;
+  padding: 6px 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+  animation: fadeInOut 2s ease-in-out forwards;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+}
+
+.copied-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: #111 transparent transparent transparent;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translate(-50%, 5px); }
+  10% { opacity: 1; transform: translate(-50%, 0); }
+  90% { opacity: 1; transform: translate(-50%, 0); }
+  100% { opacity: 0; transform: translate(-50%, -5px); }
 }

@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Trash2, Plus, Minus, ShoppingBag, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import ConfirmModal from '../../components/common/ConfirmModal';
 import './Cart.css';
 
 const Cart = ({ cartItems, removeFromCart, updateQuantity }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [itemToRemove, setItemToRemove] = useState(null);
+
   const subtotal = cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0);
   const shipping = subtotal > 1000 ? 0 : 100;
   const total = subtotal + shipping;
+
+  const handleRemove = (id, size) => {
+    setItemToRemove({ id, size });
+    setIsModalOpen(true);
+  };
 
   const handleWhatsAppOrder = () => {
     let message = `🛍️ *Grit & Hue - New Order*\n\n`;
@@ -56,7 +65,7 @@ const Cart = ({ cartItems, removeFromCart, updateQuantity }) => {
                 <div className="item-details">
                   <div className="item-header">
                     <h3>{item.name}</h3>
-                    <button className="remove-btn" onClick={() => removeFromCart(item._id, item.selectedSize)}>
+                    <button className="remove-btn" onClick={() => handleRemove(item._id, item.selectedSize)}>
                       <Trash2 size={18} />
                     </button>
                   </div>
@@ -120,6 +129,19 @@ const Cart = ({ cartItems, removeFromCart, updateQuantity }) => {
           </div>
         </div>
       </div>
+      <ConfirmModal 
+        isOpen={isModalOpen}
+        onClose={() => { setIsModalOpen(false); setItemToRemove(null); }}
+        onConfirm={() => {
+          if (itemToRemove) {
+            removeFromCart(itemToRemove.id, itemToRemove.size);
+          }
+          setIsModalOpen(false);
+          setItemToRemove(null);
+        }}
+        title="Remove Item?"
+        message="Are you sure you want to remove this item from your bag?"
+      />
     </div>
   );
 };

@@ -37,13 +37,13 @@ const Navbar = ({ cartCount, favCount, user, setUser, clearCart }) => {
 
         {/* Logo */}
         <div className="logo-container">
-          <Link to="/" className="logo-link">
+          <Link to="/" className="logo-link" onClick={() => setIsMobileMenuOpen(false)}>
             <img src="/assets/Home page/logo.png" alt="Grit and Hue Logo" className="navbar-logo" />
           </Link>
         </div>
 
         {/* Navigation Links & Mobile Icons */}
-        <ul className={`nav-links ${isMobileMenuOpen ? 'mobile-open' : ''}`}>
+        <ul className={`nav-links ${isMobileMenuOpen ? 'mobile-open' : ''}`} onClick={() => setIsMobileMenuOpen(false)}>
           <li><Link to="/men">MEN</Link></li>
           <li><Link to="/kids">KIDS</Link></li>
           

@@ -1,9 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Heart, ShoppingBag, Trash2 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import ConfirmModal from '../../components/common/ConfirmModal';
 import './Favorites.css';
 
 const Favorites = ({ favorites, toggleFavorite, addToCart }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [productToRemove, setProductToRemove] = useState(null);
+
+  const handleRemove = (product) => {
+    setProductToRemove(product);
+    setIsModalOpen(true);
+  };
+
   if (favorites.length === 0) {
     return (
       <div className="empty-fav-page">
@@ -29,7 +38,7 @@ const Favorites = ({ favorites, toggleFavorite, addToCart }) => {
                 <Link to={`/product/${product._id}`}>
                   <img src={product.images && product.images[0]} alt={product.name} />
                 </Link>
-                <button className="remove-fav-btn" onClick={() => toggleFavorite(product)}>
+                <button className="remove-fav-btn" onClick={() => handleRemove(product)}>
                   <Trash2 size={18} />
                 </button>
               </div>
@@ -49,6 +58,19 @@ const Favorites = ({ favorites, toggleFavorite, addToCart }) => {
           ))}
         </div>
       </div>
+      <ConfirmModal 
+        isOpen={isModalOpen}
+        onClose={() => { setIsModalOpen(false); setProductToRemove(null); }}
+        onConfirm={() => {
+          if (productToRemove) {
+            toggleFavorite(productToRemove);
+          }
+          setIsModalOpen(false);
+          setProductToRemove(null);
+        }}
+        title="Remove Favorite?"
+        message="Are you sure you want to remove this item from your favorites?"
+      />
     </div>
   );
 };

@@ -48,7 +48,6 @@ const Login = ({ setUser }) => {
     <div className="auth-page">
       <div className="auth-container">
         <div className="auth-header">
-          <img src="/assets/logo.png" alt="Grit and Hue Logo" className="auth-logo" />
           <h2 className="auth-title">Welcome Back</h2>
           <p className="auth-subtitle">Sign in to your account</p>
         </div>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, useLocation, useNavigate } from 'react-router-dom';
+import { ArrowLeft, ShoppingBag } from 'lucide-react';
 import Navbar from './components/common/Navbar';
 import Kids from './pages/public/Kids';
 import Men from './pages/public/Men';
@@ -22,6 +23,62 @@ function Home() {
         </div>
       </div>
     </main>
+  );
+}
+
+function PageNavbar({ title, showLogo = false, cartCount = 0 }) {
+  const navigate = useNavigate();
+
+  return (
+    <header className="auth-navbar">
+      <div className="auth-nav-left">
+        <button className="auth-back-btn" onClick={() => navigate(-1)} aria-label="Go back">
+          <ArrowLeft size={24} />
+        </button>
+        {showLogo && (
+          <Link to="/" className="auth-logo-left-link">
+            <img src="/assets/Home page/logo.png" alt="Grit and Hue Logo" className="auth-nav-logo-small" />
+          </Link>
+        )}
+      </div>
+
+      <div className="auth-logo-center">
+        {title && <span className="page-nav-title">{title}</span>}
+      </div>
+
+      <div className="auth-nav-right">
+        <Link to="/cart" aria-label="Shopping Bag" className="auth-cart-icon-link">
+          <ShoppingBag size={24} strokeWidth={1.5} />
+          {cartCount > 0 && <span className="auth-cart-badge">{cartCount}</span>}
+        </Link>
+      </div>
+    </header>
+  );
+}
+
+function AppLayout({ cartItems, favorites, user, setUser, clearCart, children }) {
+  const location = useLocation();
+  const isLoginPage = location.pathname === '/login';
+
+  const cartCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+
+  return (
+    <div className="app-wrapper">
+      {isLoginPage ? (
+        <PageNavbar showLogo={true} cartCount={cartCount} />
+      ) : (
+        <Navbar 
+          cartCount={cartCount} 
+          favCount={favorites.length}
+          user={user}
+          setUser={setUser}
+          clearCart={clearCart}
+        />
+      )}
+      <div className="page-content">
+        {children}
+      </div>
+    </div>
   );
 }
 
@@ -118,27 +175,24 @@ function App() {
 
   return (
     <Router>
-      <div className="app-wrapper">
-        <Navbar 
-          cartCount={cartItems.reduce((acc, item) => acc + item.quantity, 0)} 
-          favCount={favorites.length}
-          user={user}
-          setUser={setUser}
-          clearCart={() => { setCartItems([]); setFavorites([]); }}
-        />
-        <div className="page-content">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/kids" element={<Kids addToCart={addToCart} favorites={favorites} toggleFavorite={toggleFavorite} />} />
-            <Route path="/men" element={<Men addToCart={addToCart} favorites={favorites} toggleFavorite={toggleFavorite} />} />
-            <Route path="/login" element={<Login setUser={setUser} />} />
-            <Route path="/register" element={<Register setUser={setUser} />} />
-            <Route path="/product/:id" element={<ProductDetails addToCart={addToCart} favorites={favorites} toggleFavorite={toggleFavorite} />} />
-            <Route path="/cart" element={<Cart cartItems={cartItems} removeFromCart={removeFromCart} updateQuantity={updateQuantity} />} />
-            <Route path="/favorites" element={<Favorites favorites={favorites} toggleFavorite={toggleFavorite} addToCart={addToCart} />} />
-          </Routes>
-        </div>
-      </div>
+      <AppLayout
+        cartItems={cartItems}
+        favorites={favorites}
+        user={user}
+        setUser={setUser}
+        clearCart={() => { setCartItems([]); setFavorites([]); }}
+      >
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/kids" element={<Kids addToCart={addToCart} favorites={favorites} toggleFavorite={toggleFavorite} />} />
+          <Route path="/men" element={<Men addToCart={addToCart} favorites={favorites} toggleFavorite={toggleFavorite} />} />
+          <Route path="/login" element={<Login setUser={setUser} />} />
+          <Route path="/register" element={<Register setUser={setUser} />} />
+          <Route path="/product/:id" element={<ProductDetails addToCart={addToCart} favorites={favorites} toggleFavorite={toggleFavorite} />} />
+          <Route path="/cart" element={<Cart cartItems={cartItems} removeFromCart={removeFromCart} updateQuantity={updateQuantity} />} />
+          <Route path="/favorites" element={<Favorites favorites={favorites} toggleFavorite={toggleFavorite} addToCart={addToCart} />} />
+        </Routes>
+      </AppLayout>
     </Router>
   );
 }

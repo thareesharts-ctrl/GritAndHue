@@ -329,3 +329,121 @@
     height: 22px;
   }
 }
+
+/* Auth Navbar for Login/Register Pages */
+.auth-navbar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid #f0f0f0;
+  box-sizing: border-box;
+}
+
+.auth-back-btn {
+  background: none;
+  border: none;
+  color: #111;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  flex: 0 0 40px;
+}
+
+.auth-back-btn:hover {
+  background-color: #f5f5f5;
+  transform: translateX(-2px);
+}
+
+.auth-logo-center {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.auth-nav-logo {
+  height: 40px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.auth-nav-spacer {
+  flex: 0 0 40px;
+}
+
+.page-nav-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #111;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Auth / Simple Page Navbar Layout Extensions */
+.auth-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 0 0 150px;
+}
+
+.auth-nav-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex: 0 0 150px;
+}
+
+.auth-logo-left-link {
+  display: flex;
+  align-items: center;
+}
+
+.auth-nav-logo-small {
+  height: 32px;
+  width: auto;
+  object-fit: contain;
+}
+
+.auth-cart-icon-link {
+  position: relative;
+  color: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.auth-cart-icon-link:hover {
+  background-color: #f5f5f5;
+  transform: scale(1.05);
+}
+
+.auth-cart-badge {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background-color: #e50010;
+  color: white;
+  font-size: 0.6rem;
+  font-weight: 700;
+  min-width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  border: 1.5px solid white;
+}

@@ -13,7 +13,8 @@ const Cart = ({ cartItems, removeFromCart, updateQuantity }) => {
     message += `--- *Order Details* ---\n`;
     
     cartItems.forEach(item => {
-      const productLink = `http://localhost:5173/product/${item._id || item.id}`;
+      const siteUrl = import.meta.env.VITE_SITE_URL || 'http://localhost:5173';
+      const productLink = `${siteUrl}/product/${item._id || item.id}`;
       message += `• *${item.name}*\n  Size: ${item.selectedSize || 'N/A'}\n  Qty: ${item.quantity}\n  Price: Rs. ${item.price * item.quantity}\n  Product Link: ${productLink}\n\n`;
     });
 

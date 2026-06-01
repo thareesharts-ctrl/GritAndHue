@@ -26,7 +26,8 @@ const Login = ({ setUser }) => {
       if (response.ok) {
         if (data.role === 'admin') {
           // If admin, redirect to admin panel URL with token
-          window.location.href = `http://localhost:5174/admin?token=${data.token}`; 
+          const adminUrl = import.meta.env.VITE_ADMIN_URL || 'http://localhost:5174';
+          window.location.href = `${adminUrl}/admin?token=${data.token}`; 
         } else {
           // If regular user
           localStorage.setItem('userToken', data.token);

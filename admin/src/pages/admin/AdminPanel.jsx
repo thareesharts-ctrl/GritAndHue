@@ -208,11 +208,13 @@ const AdminPanel = () => {
     ? products 
     : products.filter(p => p.category === categoryFilter);
 
+  const siteUrl = import.meta.env.VITE_SITE_URL || 'http://localhost:5173';
+
   return (
     <div className="admin-page">
       <div className="admin-header">
         <div className="admin-brand">
-          <img src="http://localhost:5173/assets/Home page/logo.png" alt="Grit and Hue" className="admin-logo" />
+          <img src={`${siteUrl}/assets/Home page/logo.png`} alt="Grit and Hue" className="admin-logo" />
           <div className="admin-title-group">
             <h1>Dashboard</h1>
             <p>Product Catalog Manager</p>
@@ -224,7 +226,7 @@ const AdminPanel = () => {
           </button>
           <button 
             className="logout-btn"
-            onClick={() => { localStorage.removeItem('adminToken'); window.location.href = 'http://localhost:5173/login'; }}
+            onClick={() => { localStorage.removeItem('adminToken'); window.location.href = `${siteUrl}/login`; }}
           >
             Logout
           </button>

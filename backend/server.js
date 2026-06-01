@@ -427,7 +427,7 @@ app.get('/api/v1/orders/verify/:code', async (req, res) => {
             <div class="watermark">SECURE</div>
             
             <div class="header">
-              <img src="http://localhost:5173/assets/Home page/logo.png" alt="Grit and Hue" class="logo" />
+              <img src="${process.env.FRONTEND_URL || 'http://localhost:5173'}/assets/Home page/logo.png" alt="Grit and Hue" class="logo" />
               <div class="title">Secure Order Verification</div>
             </div>
 

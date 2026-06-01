@@ -15,7 +15,8 @@ const ProtectedAdmin = ({ children }) => {
 
   const token = localStorage.getItem('adminToken');
   if (!token) {
-    window.location.href = 'http://localhost:5173/login';
+    const siteUrl = import.meta.env.VITE_SITE_URL || 'http://localhost:5173';
+    window.location.href = `${siteUrl}/login`;
     return null;
   }
   return children;

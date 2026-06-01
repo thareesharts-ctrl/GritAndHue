@@ -27,7 +27,7 @@ const Favorites = ({ favorites, toggleFavorite, addToCart }) => {
             <div key={product._id} className="fav-card">
               <div className="fav-image-container">
                 <Link to={`/product/${product._id}`}>
-                  <img src={product.image_url} alt={product.name} />
+                  <img src={product.images && product.images[0]} alt={product.name} />
                 </Link>
                 <button className="remove-fav-btn" onClick={() => toggleFavorite(product)}>
                   <Trash2 size={18} />

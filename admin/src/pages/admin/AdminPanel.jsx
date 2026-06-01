@@ -60,15 +60,48 @@ const AdminPanel = () => {
   };
 
   const handleImageChange = (e) => {
-    const files = Array.from(e.target.files);
-    if (files.length > 5) {
+    const selectedFiles = Array.from(e.target.files);
+    
+    // Append newly selected files to currently stored files
+    const combinedFiles = [...imageFiles, ...selectedFiles];
+    
+    if (combinedFiles.length > 5) {
       alert("You can only upload a maximum of 5 images.");
       return;
     }
     
-    setImageFiles(files);
-    const previews = files.map(file => URL.createObjectURL(file));
-    setImagePreviews(previews);
+    setImageFiles(combinedFiles);
+    
+    // Generate object URLs for the newly added files
+    const newPreviews = selectedFiles.map(file => URL.createObjectURL(file));
+    
+    // Append new previews to existing previews
+    setImagePreviews(prev => [...prev, ...newPreviews]);
+  };
+
+  const triggerConfetti = () => {
+    const colors = ['#ff0055', '#00ff66', '#0055ff', '#ffff00', '#ff00ff', '#00ffff', '#ffa500'];
+    for (let i = 0; i < 80; i++) {
+      const confetti = document.createElement('div');
+      confetti.className = 'confetti-particle';
+      confetti.style.left = Math.random() * 100 + 'vw';
+      confetti.style.top = '-20px';
+      confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      confetti.style.width = Math.random() * 8 + 6 + 'px';
+      confetti.style.height = Math.random() * 8 + 6 + 'px';
+      if (Math.random() > 0.5) {
+        confetti.style.borderRadius = '50%';
+      }
+      
+      confetti.style.animationDuration = Math.random() * 2 + 1.5 + 's';
+      confetti.style.animationDelay = Math.random() * 0.4 + 's';
+      
+      document.body.appendChild(confetti);
+      
+      setTimeout(() => {
+        confetti.remove();
+      }, 3500);
+    }
   };
 
   const resetForm = () => {
@@ -136,6 +169,7 @@ const AdminPanel = () => {
       const result = await response.json();
       if(response.ok) {
         setMessage({ type: 'success', text: `Product ${editingProduct ? 'updated' : 'published'} successfully!` });
+        triggerConfetti();
         setTimeout(() => {
           resetForm();
           fetchProducts();
@@ -178,7 +212,7 @@ const AdminPanel = () => {
     <div className="admin-page">
       <div className="admin-header">
         <div className="admin-brand">
-          <img src="http://localhost:5173/assets/logo.png" alt="Grit and Hue" className="admin-logo" />
+          <img src="http://localhost:5173/assets/Home page/logo.png" alt="Grit and Hue" className="admin-logo" />
           <div className="admin-title-group">
             <h1>Dashboard</h1>
             <p>Product Catalog Manager</p>
@@ -328,8 +362,18 @@ const AdminPanel = () => {
                   )}
                   <input id="image-input" type="file" accept="image/*" multiple onChange={handleImageChange} hidden />
                 </div>
-                {imagePreviews.length > 0 && (
-                  <label htmlFor="image-input" className="change-all-btn">Replace All Images</label>
+                 {imagePreviews.length > 0 && (
+                  <button 
+                    type="button" 
+                    className="change-all-btn" 
+                    style={{ background: 'none', border: 'none', color: '#e53e3e', cursor: 'pointer', display: 'block', margin: '10px auto 0 auto', fontWeight: 600, fontSize: '0.85rem' }}
+                    onClick={() => {
+                      setImageFiles([]);
+                      setImagePreviews([]);
+                    }}
+                  >
+                    Clear All Images
+                  </button>
                 )}
               </div>
 
@@ -359,6 +403,16 @@ const AdminPanel = () => {
               <button className="cancel-btn" onClick={() => setDeletingId(null)}>Cancel</button>
               <button className="confirm-delete-btn" onClick={handleDelete}>Yes, Delete Product</button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {loading && (
+        <div className="loading-overlay-container">
+          <div className="loading-spinner-box">
+            <div className="loading-spinner"></div>
+            <h3>Uploading Product</h3>
+            <p>Publishing details & uploading images securely...</p>
           </div>
         </div>
       )}

@@ -38,19 +38,6 @@ const ProductDetails = ({ addToCart, favorites, toggleFavorite }) => {
   if (error) return <div className="error-state">{error}</div>;
   if (!product) return <div className="error-state">Product not found.</div>;
 
-  const handleWhatsAppOrder = () => {
-    if (!selectedSize && product.sizes && product.sizes.length > 0) {
-      setSizeError(true);
-      return;
-    }
-    const message = `Hi Grit and Hue! I'm interested in ordering:
-Product: ${product.name}
-Size: ${selectedSize || 'N/A'}
-Price: Rs. ${product.price}
-Link: ${window.location.href}`;
-    const whatsappUrl = `https://wa.me/9655673073?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
-  };
 
   const handleAddToCart = () => {
     if (!selectedSize && product.sizes && product.sizes.length > 0) {
@@ -147,9 +134,6 @@ Link: ${window.location.href}`;
             </div>
 
             <div className="action-buttons">
-              <button className="order-whatsapp-btn" onClick={handleWhatsAppOrder}>
-                ORDER ON WHATSAPP
-              </button>
               <button className="add-cart-btn" onClick={handleAddToCart}>
                 <ShoppingBag size={20} /> ADD TO BAG
               </button>

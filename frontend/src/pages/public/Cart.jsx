@@ -9,14 +9,18 @@ const Cart = ({ cartItems, removeFromCart, updateQuantity }) => {
   const total = subtotal + shipping;
 
   const handleWhatsAppOrder = () => {
-    let message = "🛍️ *New Order from Grit and Hue*\n\n";
+    let message = `🛍️ *Grit & Hue - New Order*\n\n`;
+    message += `--- *Order Details* ---\n`;
+    
     cartItems.forEach(item => {
-      message += `• *${item.name}*\n  Size: ${item.selectedSize || 'N/A'}\n  Qty: ${item.quantity}\n  Price: Rs. ${item.price * item.quantity}\n\n`;
+      const productLink = `http://localhost:5173/product/${item._id || item.id}`;
+      message += `• *${item.name}*\n  Size: ${item.selectedSize || 'N/A'}\n  Qty: ${item.quantity}\n  Price: Rs. ${item.price * item.quantity}\n  Product Link: ${productLink}\n\n`;
     });
-    message += `*Subtotal:* Rs. ${subtotal}`;
-    message += `\n*Shipping:* ${shipping === 0 ? 'FREE' : 'Rs. ' + shipping}`;
-    message += `\n*Total Payable:* Rs. ${total}\n\n`;
-    message += "Please confirm my order!";
+
+    message += `*Subtotal:* Rs. ${subtotal}\n`;
+    message += `*Shipping:* ${shipping === 0 ? 'FREE' : 'Rs. ' + shipping}\n`;
+    message += `*Total Payable:* Rs. ${total}\n\n`;
+    message += `Please confirm my order details!`;
 
     const whatsappUrl = `https://wa.me/9655673073?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');

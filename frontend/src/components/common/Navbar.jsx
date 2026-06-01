@@ -90,3 +90,4 @@ const Navbar = ({ cartCount, favCount, user, setUser, clearCart }) => {
 };
 
 export default Navbar;
+

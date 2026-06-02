@@ -36,6 +36,12 @@ const Cart = ({ cartItems, removeFromCart, updateQuantity, user }) => {
       const res = await fetch((import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000') + '/api/v1/user/addresses', {
         headers: { 'Authorization': `Bearer ${token}` }
       });
+      if (res.status === 401) {
+        localStorage.removeItem('userToken');
+        localStorage.removeItem('userData');
+        window.location.href = '/login';
+        return;
+      }
       if (res.ok) {
         const data = await res.json();
         setAddresses(data);
@@ -141,6 +147,14 @@ const Cart = ({ cartItems, removeFromCart, updateQuantity, user }) => {
         body: JSON.stringify(formData)
       });
 
+      if (res.status === 401) {
+        localStorage.removeItem('userToken');
+        localStorage.removeItem('userData');
+        alert("Your session has expired. Please log in again.");
+        window.location.href = '/login';
+        return;
+      }
+
       if (res.ok) {
         const savedAddr = await res.json();
         setIsAddingNew(false);
@@ -181,6 +195,14 @@ const Cart = ({ cartItems, removeFromCart, updateQuantity, user }) => {
           'Authorization': `Bearer ${token}`
         }
       });
+
+      if (res.status === 401) {
+        localStorage.removeItem('userToken');
+        localStorage.removeItem('userData');
+        alert("Your session has expired. Please log in again.");
+        window.location.href = '/login';
+        return;
+      }
 
       if (res.ok) {
         await fetchAddresses();

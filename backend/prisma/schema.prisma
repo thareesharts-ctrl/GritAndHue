@@ -36,6 +36,7 @@ model User {
   updatedAt DateTime   @updatedAt @map("updated_at")
   
   cart      CartItem[]
+  addresses Address[]
 
   @@map("users")
 }
@@ -62,4 +63,23 @@ model Order {
   createdAt DateTime @default(now()) @map("created_at")
 
   @@map("orders")
+}
+
+model Address {
+  id           String   @id @default(uuid())
+  userId       String   @map("user_id")
+  name         String   // E.g. "Home", "Work", "John's Place"
+  phone        String
+  email        String?
+  street       String
+  apartment    String?
+  city         String
+  state        String
+  zipCode      String   @map("zip_code")
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("addresses")
 }

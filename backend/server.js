@@ -202,6 +202,97 @@ app.post('/api/v1/user/sync', verifyUser, async (req, res) => {
   }
 });
 
+// Address CRUD Routes
+app.get('/api/v1/user/addresses', verifyUser, async (req, res) => {
+  try {
+    const addresses = await prisma.address.findMany({
+      where: { userId: req.userId },
+      orderBy: { createdAt: 'desc' }
+    });
+    res.json(addresses);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to fetch addresses' });
+  }
+});
+
+app.post('/api/v1/user/addresses', verifyUser, async (req, res) => {
+  try {
+    const { name, phone, email, street, apartment, city, state, zipCode } = req.body;
+    
+    if (!name || !phone || !street || !city || !state || !zipCode) {
+      return res.status(400).json({ error: 'Required fields are missing' });
+    }
+
+    const newAddress = await prisma.address.create({
+      data: {
+        userId: req.userId,
+        name,
+        phone,
+        email: email || null,
+        street,
+        apartment: apartment || null,
+        city,
+        state,
+        zipCode
+      }
+    });
+
+    res.status(201).json(newAddress);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to create address' });
+  }
+});
+
+app.put('/api/v1/user/addresses/:id', verifyUser, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { name, phone, email, street, apartment, city, state, zipCode } = req.body;
+
+    // Verify ownership
+    const address = await prisma.address.findUnique({ where: { id } });
+    if (!address) return res.status(404).json({ error: 'Address not found' });
+    if (address.userId !== req.userId) return res.status(403).json({ error: 'Unauthorized' });
+
+    const updatedAddress = await prisma.address.update({
+      where: { id },
+      data: {
+        name,
+        phone,
+        email: email || null,
+        street,
+        apartment: apartment || null,
+        city,
+        state,
+        zipCode
+      }
+    });
+
+    res.json(updatedAddress);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to update address' });
+  }
+});
+
+app.delete('/api/v1/user/addresses/:id', verifyUser, async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    // Verify ownership
+    const address = await prisma.address.findUnique({ where: { id } });
+    if (!address) return res.status(404).json({ error: 'Address not found' });
+    if (address.userId !== req.userId) return res.status(403).json({ error: 'Unauthorized' });
+
+    await prisma.address.delete({ where: { id } });
+    res.json({ message: 'Address deleted successfully' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: 'Failed to delete address' });
+  }
+});
+
 // Products Routes
 app.post('/api/v1/products', verifyAdmin, upload.array('images', 5), async (req, res) => {
   try {

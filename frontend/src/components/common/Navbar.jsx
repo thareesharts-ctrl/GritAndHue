@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search, User, Heart, ShoppingBag, Menu, X } from 'lucide-react';
+import { Mail, User, Heart, ShoppingBag, Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 
@@ -56,6 +56,11 @@ const Navbar = ({ cartCount, favCount, user, setUser, clearCart }) => {
             </Link>
           </li>
           <li className="mobile-only-icon">
+            <Link to="/contact">
+              <Mail size={20} /> CONTACT US
+            </Link>
+          </li>
+          <li className="mobile-only-icon">
             <Link to="/cart" className="cart-icon-wrapper">
               <ShoppingBag size={20} /> 
               {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
@@ -73,12 +78,12 @@ const Navbar = ({ cartCount, favCount, user, setUser, clearCart }) => {
               <div className="divider-small"></div>
             </div>
           )}
-          <a href="#search" aria-label="Search"><Search size={22} strokeWidth={1.5} /></a>
           <Link to="/login" aria-label="Account" className="desktop-only-icon"><User size={22} strokeWidth={1.5} /></Link>
           <Link to="/favorites" aria-label="Favorites" className="desktop-only-icon cart-icon-wrapper">
             <Heart size={22} strokeWidth={1.5} />
             {favCount > 0 && <span className="cart-badge">{favCount}</span>}
           </Link>
+          <Link to="/contact" aria-label="Contact Us" className="desktop-only-icon"><Mail size={22} strokeWidth={1.5} /></Link>
           <Link to="/cart" aria-label="Shopping Bag" className="desktop-only-icon cart-icon-wrapper">
             <ShoppingBag size={22} strokeWidth={1.5} />
             {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}

@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link, useLocation, useNavigate } from 'react-router-dom';
 import { ArrowLeft, ShoppingBag } from 'lucide-react';
 import Navbar from './components/common/Navbar';
+import Footer from './components/common/Footer';
 import Kids from './pages/public/Kids';
 import Men from './pages/public/Men';
 import Login from './pages/public/Login';
@@ -9,6 +10,7 @@ import Register from './pages/public/Register';
 import ProductDetails from './pages/public/ProductDetails';
 import Cart from './pages/public/Cart';
 import Favorites from './pages/public/Favorites';
+import Contact from './pages/public/Contact';
 import './App.css';
 
 function Home() {
@@ -59,6 +61,7 @@ function PageNavbar({ title, showLogo = false, cartCount = 0 }) {
 function AppLayout({ cartItems, favorites, user, setUser, clearCart, children }) {
   const location = useLocation();
   const isLoginPage = location.pathname === '/login';
+  const showFooter = !['/login', '/register'].includes(location.pathname);
 
   const cartCount = cartItems.reduce((acc, item) => acc + item.quantity, 0);
 
@@ -78,6 +81,7 @@ function AppLayout({ cartItems, favorites, user, setUser, clearCart, children })
       <div className="page-content">
         {children}
       </div>
+      {showFooter && <Footer />}
     </div>
   );
 }
@@ -191,6 +195,7 @@ function App() {
           <Route path="/product/:id" element={<ProductDetails addToCart={addToCart} favorites={favorites} toggleFavorite={toggleFavorite} />} />
           <Route path="/cart" element={<Cart cartItems={cartItems} removeFromCart={removeFromCart} updateQuantity={updateQuantity} user={user} />} />
           <Route path="/favorites" element={<Favorites favorites={favorites} toggleFavorite={toggleFavorite} addToCart={addToCart} />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
       </AppLayout>
     </Router>

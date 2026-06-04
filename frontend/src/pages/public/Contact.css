@@ -1,0 +1,446 @@
+/* Contact.css */
+
+.contact-page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  font-family: 'Inter', -apple-system, sans-serif;
+  color: #111111;
+  box-sizing: border-box;
+}
+
+/* Header styling */
+.contact-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  animation: fadeInDown 0.6s ease-out;
+}
+
+.contact-subtitle {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #863bff; /* Premium purple hue */
+  text-transform: uppercase;
+  display: inline-block;
+  margin-bottom: 0.75rem;
+}
+
+.contact-title {
+  font-size: 2.75rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: #111111;
+  margin-bottom: 1rem;
+}
+
+.contact-tagline {
+  font-size: 1.1rem;
+  color: #666666;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* Grid Layout */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1.3fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+/* Cards Col styling */
+.contact-info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  animation: fadeInLeft 0.6s ease-out;
+}
+
+.info-card {
+  background: #ffffff;
+  border: 1px solid #eaeaea;
+  border-radius: 16px;
+  padding: 2rem;
+  display: flex;
+  gap: 1.5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s ease;
+}
+
+.info-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+  border-color: #d8c2ff;
+}
+
+.card-header-icon {
+  background: #f7f3ff;
+  color: #863bff;
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.3s, color 0.3s;
+}
+
+.info-card:hover .card-header-icon {
+  background: #863bff;
+  color: #ffffff;
+}
+
+.card-details {
+  flex-grow: 1;
+}
+
+.card-details h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #111111;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.2px;
+}
+
+.shop-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #863bff;
+  margin-bottom: 1rem;
+}
+
+.address-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.address-item {
+  display: flex;
+  flex-direction: column;
+  border-left: 2px solid #eaeaea;
+  padding-left: 10px;
+}
+
+.address-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #888888;
+  font-weight: 600;
+  margin-bottom: 0.15rem;
+}
+
+.address-value {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #333333;
+  line-height: 1.4;
+}
+
+/* GSTIN */
+.gstin-container {
+  display: inline-flex;
+  flex-direction: column;
+  background: #fcfcfc;
+  border: 1px solid #eaeaea;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+}
+
+.gstin-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #888888;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+  letter-spacing: 0.5px;
+}
+
+.gstin-value {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #111111;
+  letter-spacing: 1px;
+}
+
+/* Channels details */
+.channel-item {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+
+.channel-item:last-child {
+  margin-bottom: 0;
+}
+
+.channel-icon {
+  color: #863bff;
+  margin-top: 3px;
+}
+
+.channel-title {
+  display: block;
+  font-size: 0.75rem;
+  color: #888888;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 0.15rem;
+}
+
+.channel-link {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #111111;
+  text-decoration: none;
+  transition: color 0.2s;
+  border-bottom: 1px dashed #cccccc;
+}
+
+.channel-link:hover {
+  color: #863bff;
+  border-bottom-color: #863bff;
+}
+
+.channel-value {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.text-muted {
+  color: #888888;
+}
+
+/* Hours Card Additional details */
+.hours-card p {
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+/* Form Col styling */
+.contact-form-col {
+  animation: fadeInRight 0.6s ease-out;
+}
+
+.form-card {
+  background: #ffffff;
+  border: 1px solid #eaeaea;
+  border-radius: 20px;
+  padding: 3rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+}
+
+.form-card h2 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.5px;
+}
+
+.form-card p {
+  font-size: 0.95rem;
+  color: #666666;
+  margin-bottom: 2.5rem;
+  line-height: 1.5;
+}
+
+.contact-form-element {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-row-two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #222222;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-group input,
+.form-group textarea {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  padding: 0.9rem 1.2rem;
+  border: 1px solid #dcdcdc;
+  border-radius: 10px;
+  outline: none;
+  background-color: #fafafa;
+  color: #111111;
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #aaaaaa;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #863bff;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(134, 59, 255, 0.1);
+}
+
+/* Submit Button */
+.btn-submit-contact {
+  background-color: #111111;
+  color: #ffffff;
+  border: none;
+  padding: 1.1rem;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.2s ease;
+  margin-top: 1rem;
+}
+
+.btn-submit-contact:hover {
+  background-color: #863bff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(134, 59, 255, 0.25);
+}
+
+.btn-submit-contact:active {
+  transform: translateY(0);
+}
+
+.loading-spinner-text {
+  display: inline-block;
+}
+
+/* Success State styling */
+.success-state {
+  background: #ffffff;
+  border: 1px solid #e1f9eb;
+  border-radius: 20px;
+  padding: 4rem 3rem;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.02);
+  animation: zoomIn 0.4s ease-out;
+}
+
+.success-icon-wrapper {
+  color: #2ec4b6;
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  animation: pulseSuccess 2s infinite;
+}
+
+.success-state h2 {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: #111111;
+  margin-bottom: 1rem;
+}
+
+.success-state p {
+  font-size: 1rem;
+  color: #666666;
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+  max-width: 450px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-back-form {
+  background: #ffffff;
+  border: 1px solid #111111;
+  color: #111111;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  padding: 0.9rem 2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-back-form:hover {
+  background: #111111;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* Keyframes */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pulseSuccess {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Responsive Styles */
+@media (max-width: 900px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .contact-page-container {
+    padding: 3rem 1.5rem;
+  }
+  
+  .contact-title {
+    font-size: 2.25rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .form-row-two {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .form-card {
+    padding: 2rem;
+  }
+  
+  .success-state {
+    padding: 3rem 1.5rem;
+  }
+}

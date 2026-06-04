@@ -8,12 +8,12 @@ const ProtectedAdmin = ({ children }) => {
   const urlParams = new URLSearchParams(window.location.search);
   const tokenFromUrl = urlParams.get('token');
   if (tokenFromUrl) {
-    localStorage.setItem('adminToken', tokenFromUrl);
+    sessionStorage.setItem('adminToken', tokenFromUrl);
     // Clean up URL without refreshing
     window.history.replaceState({}, document.title, window.location.pathname);
   }
 
-  const token = localStorage.getItem('adminToken');
+  const token = sessionStorage.getItem('adminToken');
   if (!token) {
     const siteUrl = import.meta.env.VITE_SITE_URL || 'http://localhost:5173';
     window.location.href = `${siteUrl}/login`;

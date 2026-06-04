@@ -26,7 +26,7 @@ const AdminPanel = () => {
 
   const fetchProducts = async () => {
     try {
-      const token = localStorage.getItem('adminToken');
+      const token = sessionStorage.getItem('adminToken');
       const response = await fetch((import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000') + '/api/v1/products', {
         headers: { 'Authorization': `Bearer ${token}` }
       });
@@ -153,7 +153,7 @@ const AdminPanel = () => {
     });
 
     try {
-      const token = localStorage.getItem('adminToken');
+      const token = sessionStorage.getItem('adminToken');
       const url = editingProduct 
         ? (import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000') + `/api/v1/products/${editingProduct._id}`
         : (import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000') + '/api/v1/products';
@@ -187,7 +187,7 @@ const AdminPanel = () => {
     if (!deletingId) return;
     
     try {
-      const token = localStorage.getItem('adminToken');
+      const token = sessionStorage.getItem('adminToken');
       const response = await fetch((import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000') + `/api/v1/products/${deletingId}`, {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
@@ -226,7 +226,7 @@ const AdminPanel = () => {
           </button>
           <button 
             className="logout-btn"
-            onClick={() => { localStorage.removeItem('adminToken'); window.location.href = `${siteUrl}/login`; }}
+            onClick={() => { sessionStorage.removeItem('adminToken'); window.location.href = `${siteUrl}/login`; }}
           >
             Logout
           </button>

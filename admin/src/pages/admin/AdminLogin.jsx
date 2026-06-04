@@ -24,7 +24,7 @@ const AdminLogin = () => {
       const data = await response.json();
 
       if (response.ok) {
-        localStorage.setItem('adminToken', data.token);
+        sessionStorage.setItem('adminToken', data.token);
         navigate('/admin'); // Redirect to dashboard
       } else {
         setError(data.error || 'Invalid credentials');
